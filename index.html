@@ -1,40 +1,368 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fellaha for Cars</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة المتحدة القابضة للهندسة والمقاولات ومواد البناء</title>
+    
+    <!-- استيراد خط Ya Modern Pro (يجب أن تكون ملفات الخط موجودة محلياً) -->
+    <style>
+        @font-face {
+            font-family: 'Ya Modern Pro';
+            src: url('YaModernPro-Regular.woff2') format('woff2'),
+                 url('YaModernPro-Regular.woff') format('woff'),
+                 url('YaModernPro-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Ya Modern Pro';
+            src: url('YaModernPro-Bold.woff2') format('woff2'),
+                 url('YaModernPro-Bold.woff') format('woff'),
+                 url('YaModernPro-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Ya Modern Pro';
+            src: url('YaModernPro-Black.woff2') format('woff2'),
+                 url('YaModernPro-Black.woff') format('woff'),
+                 url('YaModernPro-Black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    
+    <!-- خط بديل من Google Fonts في حال عدم توفر Ya Modern Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #dacfbd;
+            --text-primary: #1d1d1b;
+            --text-secondary: #635037;
+            --white: #ffffff;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Ya Modern Pro', 'Tajawal', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Header & Logo --- */
+        header {
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(29, 29, 27, 0.2);
+            background: var(--white);
+            margin-bottom: 20px;
+            border: 4px solid var(--text-secondary);
+        }
+
+        .logo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* تأثير اللمعة */
+        .shimmer {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.6) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: skewX(-25deg);
+            animation: shimmerAnimation 3s infinite;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        @keyframes shimmerAnimation {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* --- Bio Section --- */
+        .bio-section {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .company-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .company-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--text-secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .branches {
+            background-color: rgba(99, 80, 55, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+
+        .branch-item {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* --- Social Links Section --- */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto 50px auto;
+            width: 100%;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 18px 25px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(29, 29, 27, 0.2);
+            background-color: var(--text-secondary);
+            color: var(--white);
+        }
+
+        .social-btn:active {
+            transform: scale(0.96);
+        }
+
+        .social-btn .icon-box {
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .social-btn .btn-text {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        /* ألوان خاصة للأزرار عند التحويم */
+        .social-btn.whatsapp:hover { background-color: #25D366; color: white; }
+        .social-btn.instagram:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; }
+        .social-btn.facebook:hover { background-color: #1877F2; color: white; }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 40px 20px;
+            background-color: rgba(29, 29, 27, 0.05);
+            border-top: 1px solid var(--text-secondary);
+        }
+
+        .group-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .creator-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.3s;
+            direction: ltr;
+        }
+
+        .creator-link:hover {
+            color: var(--text-primary);
+        }
+
+        .creator-link i {
+            font-size: 1rem;
+        }
+
+        /* --- Animations (Scroll Reveal) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
 </head>
 <body>
-  <header>
-    <img src="Logo.png" alt="Fellaha for Cars Logo">
-  </header>
-  <div class="social-buttons">
-    <button class="social-button" onclick="window.location.href='https://wa.me/'" title="WhatsApp">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </button>
-    <button class="social-button" onclick="window.location.href='https://instagram.com/'" title="Instagram">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
-    </button>
-    <button class="social-button" onclick="window.location.href='https://facebook.com/'" title="Facebook">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
-    </button>
-    <button class="social-button" onclick="window.location.href='https://www.tiktok.com/'" title="TikTok">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/TikTok_logo.svg" alt="TikTok">
-    </button>
-    <button class="email-button" onclick="copyEmail()">example@cars.com</button>
-  </div>
 
-  <footer>
-    Designed by <a href="https://www.instagram.com/fateh_moathen" target="_blank">Fateh</a>
-  </footer>
+    <header class="reveal">
+        <div class="logo-wrapper">
+            <div class="shimmer"></div>
+            <!-- ملف اللوغو المحلي -->
+            <img src="logo.png" alt="شعار شركة المتحدة">
+        </div>
+    </header>
 
-  <div class="background-shapes">
-    <div class="shape"></div>
-    <div class="shape"></div>
-  </div>
+    <main>
+        <section class="bio-section reveal">
+            <h1 class="company-title">شركة المتحدة للهندسة والمقاولات ومواد البناء</h1>
+            <div class="branches">
+                <div class="branch-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>فرع 1 : الموكامبو دوار المايل</span>
+                </div>
+                <div class="branch-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>فرع 2 : عفرين طريق راجو</span>
+                </div>
+            </div>
+        </section>
 
-  <script src="script.js"></script>
+        <section class="links-container">
+            <!-- واتساب -->
+            <a href="https://wa.me/963988382545" target="_blank" class="social-btn whatsapp reveal">
+                <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
+                <div class="btn-text">واتساب</div>
+                <div class="icon-box" style="opacity:0"><i class="fas fa-arrow-left"></i></div>
+            </a>
+
+            <!-- انستغرام -->
+            <a href="https://www.instagram.com/almuttahida_company?igsh=MWk1ZDYzOGYwOXZrZw%3D%3D&utm_source=qr#" target="_blank" class="social-btn instagram reveal">
+                <div class="icon-box"><i class="fab fa-instagram"></i></div>
+                <div class="btn-text">انستغرام</div>
+                <div class="icon-box" style="opacity:0"><i class="fas fa-arrow-left"></i></div>
+            </a>
+
+            <!-- فيسبوك -->
+            <a href="https://www.facebook.com/profile.php?id=61587282814480&mibextid=wwXIfr&rdid=rX4zL0WZ9eGbRch0&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AsmX2w7Bt%2F%3Fmibextid%3DwwXIfr" target="_blank" class="social-btn facebook reveal">
+                <div class="icon-box"><i class="fab fa-facebook-f"></i></div>
+                <div class="btn-text">فيسبوك</div>
+                <div class="icon-box" style="opacity:0"><i class="fas fa-arrow-left"></i></div>
+            </a>
+        </section>
+    </main>
+
+    <footer class="reveal">
+        <div class="group-name">مجموعة شيار هور التجارية</div>
+        <div class="copyright">جميع الحقوق محفوظة 2026 &copy;</div>
+        
+        <a href="https://t.me/fatehmoathen" target="_blank" class="creator-link">
+            Created by Fateh <i class="fab fa-telegram-plane"></i>
+        </a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
 </body>
 </html>
+
